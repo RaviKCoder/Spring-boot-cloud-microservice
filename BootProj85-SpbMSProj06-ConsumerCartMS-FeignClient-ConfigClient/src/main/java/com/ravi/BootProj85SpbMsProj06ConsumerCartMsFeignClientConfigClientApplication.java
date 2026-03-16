@@ -1,0 +1,15 @@
+package com.ravi;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
+
+@SpringBootApplication
+@EnableFeignClients
+public class BootProj85SpbMsProj06ConsumerCartMsFeignClientConfigClientApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(BootProj85SpbMsProj06ConsumerCartMsFeignClientConfigClientApplication.class, args);
+	}
+
+}
