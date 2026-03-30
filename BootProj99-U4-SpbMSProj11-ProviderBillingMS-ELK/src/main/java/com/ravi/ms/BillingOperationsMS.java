@@ -1,0 +1,43 @@
+package com.ravi.ms;
+
+import java.util.Random;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import lombok.extern.slf4j.Slf4j;
+
+@RestController
+@RequestMapping("/billing-api")
+@Slf4j
+public class BillingOperationsMS {
+	
+	@Value("${spring.application.instance-id}")
+	private String instance_id;
+	
+	@GetMapping("/doBill")
+	public ResponseEntity<String> generateBillAmount(){
+		
+		log.debug("from generateBillAmount() method");
+		//generate the bill amount
+		double bamount = new Random().nextDouble(40000);
+		log.debug("Bill amount is generated");
+		
+		
+		//show the bill
+		return new ResponseEntity<String>("Bill Amount is :"+bamount+"..."+instance_id,HttpStatus.OK);
+	}
+	
+	@GetMapping("/wish/{user}")
+	public ResponseEntity<String> showWishMessage(@PathVariable String user){
+		
+		log.debug("from showWishMessage() method");
+		return new ResponseEntity<String>("Good evening: "+user,HttpStatus.OK);
+	}
+
+}
